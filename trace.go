@@ -18,12 +18,29 @@
 package collex
 
 import (
+	"context"
+
+	"github.com/MrAlias/collex/transmute"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 // TracesExporter returns an OpenTelemetry-Go SpanExporter that wraps e.
 func TracesExporter(e component.TracesExporter) trace.SpanExporter {
-	// TODO
+	return &spanExporter{cexp: e}
+}
+
+type spanExporter struct {
+	cexp component.TracesExporter
+}
+
+func (e *spanExporter) ExportSpans(ctx context.Context, spans []trace.ReadOnlySpan) error {
+	return e.cexp.ConsumeTraces(ctx, transmute.Spans(spans))
+}
+
+func (e *spanExporter) Shutdown(ctx context.Context) error {
+	if s, ok := e.cexp.(interface{ Shutdown(context.Context) error }); ok {
+		return s.Shutdown(ctx)
+	}
 	return nil
 }
