@@ -150,7 +150,7 @@ func setSpan(p ptrace.Span, o trace.ReadOnlySpan) {
 	p.SetSpanID(pcommon.NewSpanID(o.SpanContext().SpanID()))
 	p.SetTraceState(ptrace.TraceState(o.SpanContext().TraceState().String()))
 	p.SetParentSpanID(pcommon.NewSpanID(o.Parent().SpanID()))
-	p.SetKind(convertSpanKind(o.SpanKind()))
+	p.SetKind(spanKind(o.SpanKind()))
 	p.SetStartTimestamp(pcommon.NewTimestampFromTime(o.StartTime()))
 	p.SetEndTimestamp(pcommon.NewTimestampFromTime(o.EndTime()))
 	setAttrMapSlice(p.Attributes(), o.Attributes())
@@ -162,7 +162,7 @@ func setSpan(p ptrace.Span, o trace.ReadOnlySpan) {
 	p.SetDroppedEventsCount(uint32(o.DroppedEvents()))
 }
 
-func convertSpanKind(o api.SpanKind) ptrace.SpanKind {
+func spanKind(o api.SpanKind) ptrace.SpanKind {
 	switch o {
 	case api.SpanKindInternal:
 		return ptrace.SpanKindInternal
