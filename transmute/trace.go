@@ -25,6 +25,7 @@ import (
 	api "go.opentelemetry.io/otel/trace"
 )
 
+// Spans converts s to pdata Traces.
 func Spans(s []trace.ReadOnlySpan) ptrace.Traces {
 	t := ptrace.NewTraces()
 	rMap := mapSpans(s)
