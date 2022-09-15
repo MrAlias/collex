@@ -2,8 +2,10 @@
 
 Use [OpenTelemetry Collector] Exporters with [OpenTelemetry Go]
 
-:construction: This project is still a work in progress.
+:warning:
+This project is a work in progress :construction:.
 Breaking changes may be introduced.
+:warning:
 
 ## Getting Started
 
