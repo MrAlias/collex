@@ -67,5 +67,5 @@ func (f *Factory) SpanExporter(ctx context.Context, cfg config.Exporter) (trace.
 	if err != nil {
 		return nil, err
 	}
-	return TracesExporter(collExp), nil
+	return &spanExporter{cexp: collExp}, nil
 }

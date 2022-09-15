@@ -25,11 +25,6 @@ import (
 	"go.opentelemetry.io/otel/sdk/trace"
 )
 
-// TracesExporter returns an OpenTelemetry-Go SpanExporter that wraps e.
-func TracesExporter(e component.TracesExporter) trace.SpanExporter {
-	return &spanExporter{cexp: e}
-}
-
 type spanExporter struct {
 	cexp component.TracesExporter
 }
