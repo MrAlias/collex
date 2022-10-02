@@ -94,28 +94,28 @@ func setAttribute(p pcommon.Map, a attribute.KeyValue) {
 		vSlice := a.Value.AsBoolSlice()
 		s.EnsureCapacity(len(vSlice))
 		for _, v := range vSlice {
-			s.AppendEmpty().SetBoolVal(v)
+			s.AppendEmpty().SetBool(v)
 		}
 	case attribute.INT64SLICE:
 		s := p.PutEmptySlice(string(a.Key))
 		vSlice := a.Value.AsInt64Slice()
 		s.EnsureCapacity(len(vSlice))
 		for _, v := range vSlice {
-			s.AppendEmpty().SetIntVal(v)
+			s.AppendEmpty().SetInt(v)
 		}
 	case attribute.FLOAT64SLICE:
 		s := p.PutEmptySlice(string(a.Key))
 		vSlice := a.Value.AsFloat64Slice()
 		s.EnsureCapacity(len(vSlice))
 		for _, v := range vSlice {
-			s.AppendEmpty().SetDoubleVal(v)
+			s.AppendEmpty().SetDouble(v)
 		}
 	case attribute.STRINGSLICE:
 		s := p.PutEmptySlice(string(a.Key))
 		vSlice := a.Value.AsStringSlice()
 		s.EnsureCapacity(len(vSlice))
 		for _, v := range vSlice {
-			s.AppendEmpty().SetStringVal(v)
+			s.AppendEmpty().SetStr(v)
 		}
 	default:
 		// drop unknown.
@@ -148,7 +148,7 @@ func setSpan(p ptrace.Span, o trace.ReadOnlySpan) {
 	p.SetName(o.Name())
 	p.SetTraceID(pcommon.TraceID(o.SpanContext().TraceID()))
 	p.SetSpanID(pcommon.SpanID(o.SpanContext().SpanID()))
-	p.TraceStateStruct().FromRaw(o.SpanContext().TraceState().String())
+	p.TraceState().FromRaw(o.SpanContext().TraceState().String())
 	p.SetParentSpanID(pcommon.SpanID(o.Parent().SpanID()))
 	p.SetKind(spanKind(o.SpanKind()))
 	p.SetStartTimestamp(pcommon.NewTimestampFromTime(o.StartTime()))
@@ -184,7 +184,7 @@ func setLinks(p ptrace.SpanLinkSlice, o []trace.Link) {
 		pl := p.AppendEmpty()
 		pl.SetTraceID(pcommon.TraceID(ol.SpanContext.TraceID()))
 		pl.SetSpanID(pcommon.SpanID(ol.SpanContext.SpanID()))
-		pl.TraceStateStruct().FromRaw(ol.SpanContext.TraceState().String())
+		pl.TraceState().FromRaw(ol.SpanContext.TraceState().String())
 		setAttrMapSlice(pl.Attributes(), ol.Attributes)
 		pl.SetDroppedAttributesCount(uint32(ol.DroppedAttributeCount))
 	}
