@@ -201,7 +201,7 @@ func setEvents(p ptrace.SpanEventSlice, o []trace.Event) {
 	}
 }
 
-func setStatus(p ptrace.SpanStatus, o trace.Status) {
+func setStatus(p ptrace.Status, o trace.Status) {
 	p.SetMessage(o.Description)
 	switch o.Code {
 	case codes.Ok:
