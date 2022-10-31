@@ -88,7 +88,7 @@ func setAttribute(p pcommon.Map, a attribute.KeyValue) {
 	case attribute.FLOAT64:
 		p.PutDouble(string(a.Key), a.Value.AsFloat64())
 	case attribute.STRING:
-		p.PutString(string(a.Key), a.Value.AsString())
+		p.PutStr(string(a.Key), a.Value.AsString())
 	case attribute.BOOLSLICE:
 		s := p.PutEmptySlice(string(a.Key))
 		vSlice := a.Value.AsBoolSlice()
