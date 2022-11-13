@@ -18,7 +18,6 @@ import (
 	"context"
 
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/config"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/trace"
 	"go.uber.org/zap"
@@ -59,7 +58,7 @@ func NewFactory(f component.ExporterFactory, set *component.ExporterCreateSettin
 // SpanExporter returns an OpenTelemetry Go SpanExporter that can be registered
 // with a TracerProvider. If cfg is nil the factory default configuration for
 // the ExporterFactory is used.
-func (f *Factory) SpanExporter(ctx context.Context, cfg config.Exporter) (trace.SpanExporter, error) {
+func (f *Factory) SpanExporter(ctx context.Context, cfg component.ExporterConfig) (trace.SpanExporter, error) {
 	if cfg == nil {
 		cfg = f.collFactory.CreateDefaultConfig()
 	}
