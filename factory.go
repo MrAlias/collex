@@ -18,6 +18,7 @@ import (
 	"context"
 
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/trace"
 	"go.uber.org/zap"
@@ -26,21 +27,21 @@ import (
 // Factory wraps an OpenTelemetry collector ExporterFactory and initializes new
 // OpenTelemetry Go exporters from it.
 type Factory struct {
-	createCfg   component.ExporterCreateSettings
-	collFactory component.ExporterFactory
+	createCfg   exporter.CreateSettings
+	collFactory exporter.Factory
 }
 
 // NewFactory returns a new configured *Factory. If set is nil, a default
-// ExporterCreateSettings will be used. These settings use a production ready
-// Zap logger and a global OpenTelemetry Go TracerProvider.
-func NewFactory(f component.ExporterFactory, set *component.ExporterCreateSettings) (*Factory, error) {
+// CreateSettings will be used. These settings use a production ready Zap
+// logger and a global OpenTelemetry Go TracerProvider.
+func NewFactory(f exporter.Factory, set *exporter.CreateSettings) (*Factory, error) {
 	if set == nil {
 		logger, err := zap.NewProduction()
 		if err != nil {
 			return nil, err
 		}
 
-		set = &component.ExporterCreateSettings{
+		set = &exporter.CreateSettings{
 			TelemetrySettings: component.TelemetrySettings{
 				Logger:         logger,
 				TracerProvider: otel.GetTracerProvider(),
@@ -58,7 +59,7 @@ func NewFactory(f component.ExporterFactory, set *component.ExporterCreateSettin
 // SpanExporter returns an OpenTelemetry Go SpanExporter that can be registered
 // with a TracerProvider. If cfg is nil the factory default configuration for
 // the ExporterFactory is used.
-func (f *Factory) SpanExporter(ctx context.Context, cfg component.ExporterConfig) (trace.SpanExporter, error) {
+func (f *Factory) SpanExporter(ctx context.Context, cfg component.Config) (trace.SpanExporter, error) {
 	if cfg == nil {
 		cfg = f.collFactory.CreateDefaultConfig()
 	}

@@ -21,12 +21,12 @@ import (
 	"context"
 
 	"github.com/MrAlias/collex/transmute"
-	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 type spanExporter struct {
-	cexp component.TracesExporter
+	cexp exporter.Traces
 }
 
 func (e *spanExporter) ExportSpans(ctx context.Context, spans []trace.ReadOnlySpan) error {
