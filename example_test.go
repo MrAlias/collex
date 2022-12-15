@@ -20,6 +20,7 @@ import (
 
 	"github.com/MrAlias/collex"
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/loggingexporter"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -27,7 +28,7 @@ import (
 )
 
 func ExampleTracesExporter() {
-	settings := &component.ExporterCreateSettings{
+	settings := &exporter.CreateSettings{
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
 			TracerProvider: otel.GetTracerProvider(),
