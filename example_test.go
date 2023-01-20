@@ -27,7 +27,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func ExampleTracesExporter() {
+func Example() {
 	settings := &exporter.CreateSettings{
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
