@@ -5,7 +5,7 @@ go 1.19
 require (
 	go.opentelemetry.io/collector/component v0.78.2
 	go.opentelemetry.io/collector/exporter v0.78.2
-	go.opentelemetry.io/collector/exporter/loggingexporter v0.77.0
+	go.opentelemetry.io/collector/exporter/loggingexporter v0.78.2
 	go.opentelemetry.io/collector/pdata v1.0.0-rcv0012
 	go.opentelemetry.io/otel v1.16.0
 	go.opentelemetry.io/otel/sdk v1.16.0
