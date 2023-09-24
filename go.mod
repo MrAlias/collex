@@ -8,7 +8,7 @@ require (
 	go.opentelemetry.io/collector/exporter/loggingexporter v0.85.0
 	go.opentelemetry.io/collector/pdata v1.0.0-rcv0014
 	go.opentelemetry.io/otel v1.18.0
-	go.opentelemetry.io/otel/sdk v1.17.0
+	go.opentelemetry.io/otel/sdk v1.18.0
 	go.opentelemetry.io/otel/trace v1.18.0
 	go.uber.org/zap v1.26.0
 )
