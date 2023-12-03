@@ -3,7 +3,7 @@ module github.com/MrAlias/collex
 go 1.19
 
 require (
-	go.opentelemetry.io/collector/component v0.90.0
+	go.opentelemetry.io/collector/component v0.90.1
 	go.opentelemetry.io/collector/exporter v0.90.1
 	go.opentelemetry.io/collector/exporter/loggingexporter v0.90.1
 	go.opentelemetry.io/collector/pdata v1.0.0
