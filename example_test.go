@@ -20,9 +20,12 @@ import (
 
 	"github.com/MrAlias/collex"
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/config/configtelemetry"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/collector/exporter/debugexporter"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/noop"
 	"go.opentelemetry.io/otel/sdk/trace"
 	"go.uber.org/zap"
 )
@@ -32,6 +35,9 @@ func Example() {
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
 			TracerProvider: otel.GetTracerProvider(),
+			LeveledMeterProvider: func(configtelemetry.Level) metric.MeterProvider {
+				return noop.NewMeterProvider()
+			},
 		},
 	}
 	factory, err := collex.NewFactory(debugexporter.NewFactory(), settings)
@@ -53,5 +59,5 @@ func Example() {
 		log.Fatal(err)
 	}
 
-	// Output: {"level":"info","msg":"TracesExporter","#spans":1}
+	// Output: {"level":"info","msg":"TracesExporter","resource spans":1,"spans":1}
 }
