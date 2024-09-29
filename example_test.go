@@ -21,20 +21,20 @@ import (
 	"github.com/MrAlias/collex"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/exporter"
-	"go.opentelemetry.io/collector/exporter/loggingexporter"
+	"go.opentelemetry.io/collector/exporter/debugexporter"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/trace"
 	"go.uber.org/zap"
 )
 
 func Example() {
-	settings := &exporter.CreateSettings{
+	settings := &exporter.Settings{
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
 			TracerProvider: otel.GetTracerProvider(),
 		},
 	}
-	factory, err := collex.NewFactory(loggingexporter.NewFactory(), settings)
+	factory, err := collex.NewFactory(debugexporter.NewFactory(), settings)
 	if err != nil {
 		log.Fatal(err)
 	}

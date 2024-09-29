@@ -27,21 +27,21 @@ import (
 // Factory wraps an OpenTelemetry collector ExporterFactory and initializes new
 // OpenTelemetry Go exporters from it.
 type Factory struct {
-	createCfg   exporter.CreateSettings
+	createCfg   exporter.Settings
 	collFactory exporter.Factory
 }
 
 // NewFactory returns a new configured *Factory. If set is nil, a default
-// CreateSettings will be used. These settings use a production ready Zap
-// logger and a global OpenTelemetry Go TracerProvider.
-func NewFactory(f exporter.Factory, set *exporter.CreateSettings) (*Factory, error) {
+// Settings will be used. These settings use a production ready Zap logger and
+// a global OpenTelemetry Go TracerProvider.
+func NewFactory(f exporter.Factory, set *exporter.Settings) (*Factory, error) {
 	if set == nil {
 		logger, err := zap.NewProduction()
 		if err != nil {
 			return nil, err
 		}
 
-		set = &exporter.CreateSettings{
+		set = &exporter.Settings{
 			TelemetrySettings: component.TelemetrySettings{
 				Logger:         logger,
 				TracerProvider: otel.GetTracerProvider(),
