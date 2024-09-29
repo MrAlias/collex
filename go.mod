@@ -1,6 +1,6 @@
 module github.com/MrAlias/collex
 
-go 1.19
+go 1.21.0
 
 require (
 	go.opentelemetry.io/collector/component v0.97.0
