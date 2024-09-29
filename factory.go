@@ -18,8 +18,11 @@ import (
 	"context"
 
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/config/configtelemetry"
 	"go.opentelemetry.io/collector/exporter"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/noop"
 	"go.opentelemetry.io/otel/sdk/trace"
 	"go.uber.org/zap"
 )
@@ -45,6 +48,9 @@ func NewFactory(f exporter.Factory, set *exporter.Settings) (*Factory, error) {
 			TelemetrySettings: component.TelemetrySettings{
 				Logger:         logger,
 				TracerProvider: otel.GetTracerProvider(),
+				LeveledMeterProvider: func(configtelemetry.Level) metric.MeterProvider {
+					return noop.NewMeterProvider()
+				},
 			},
 			BuildInfo: component.BuildInfo{
 				Command:     "collex",
