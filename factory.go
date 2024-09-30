@@ -73,5 +73,11 @@ func (f *Factory) SpanExporter(ctx context.Context, cfg component.Config) (trace
 	if err != nil {
 		return nil, err
 	}
-	return &spanExporter{cexp: collExp}, nil
+	return &spanExporter{cexp: collExp}, collExp.Start(ctx, emptyHost{})
+}
+
+type emptyHost struct{}
+
+func (emptyHost) GetExtensions() map[component.ID]component.Component {
+	return nil
 }
