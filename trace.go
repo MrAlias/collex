@@ -34,8 +34,5 @@ func (e *spanExporter) ExportSpans(ctx context.Context, spans []trace.ReadOnlySp
 }
 
 func (e *spanExporter) Shutdown(ctx context.Context) error {
-	if s, ok := e.cexp.(interface{ Shutdown(context.Context) error }); ok {
-		return s.Shutdown(ctx)
-	}
-	return nil
+	return e.cexp.Shutdown(ctx)
 }
