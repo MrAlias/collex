@@ -69,7 +69,7 @@ func (f *Factory) SpanExporter(ctx context.Context, cfg component.Config) (trace
 	if cfg == nil {
 		cfg = f.collFactory.CreateDefaultConfig()
 	}
-	collExp, err := f.collFactory.CreateTracesExporter(ctx, f.createCfg, cfg)
+	collExp, err := f.collFactory.CreateTraces(ctx, f.createCfg, cfg)
 	if err != nil {
 		return nil, err
 	}
