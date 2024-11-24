@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	go.opentelemetry.io/collector/component v0.113.0
-	go.opentelemetry.io/collector/config/configtelemetry v0.113.0
+	go.opentelemetry.io/collector/config/configtelemetry v0.114.0
 	go.opentelemetry.io/collector/exporter v0.113.0
 	go.opentelemetry.io/collector/exporter/debugexporter v0.113.0
 	go.opentelemetry.io/collector/pdata v1.19.0
