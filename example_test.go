@@ -35,6 +35,7 @@ func Example() {
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
 			TracerProvider: otel.GetTracerProvider(),
+			MeterProvider:  otel.GetMeterProvider(),
 			LeveledMeterProvider: func(configtelemetry.Level) metric.MeterProvider {
 				return noop.NewMeterProvider()
 			},
@@ -59,5 +60,5 @@ func Example() {
 		log.Fatal(err)
 	}
 
-	// Output: {"level":"info","msg":"TracesExporter","resource spans":1,"spans":1}
+	// Output: {"level":"info","msg":"Traces","resource spans":1,"spans":1}
 }

@@ -48,6 +48,7 @@ func NewFactory(f exporter.Factory, set *exporter.Settings) (*Factory, error) {
 			TelemetrySettings: component.TelemetrySettings{
 				Logger:         logger,
 				TracerProvider: otel.GetTracerProvider(),
+				MeterProvider:  otel.GetMeterProvider(),
 				LeveledMeterProvider: func(configtelemetry.Level) metric.MeterProvider {
 					return noop.NewMeterProvider()
 				},
