@@ -3,10 +3,10 @@ module github.com/MrAlias/collex
 go 1.22.0
 
 require (
-	go.opentelemetry.io/collector/component v0.117.0
+	go.opentelemetry.io/collector/component v0.118.0
 	go.opentelemetry.io/collector/exporter v0.117.0
 	go.opentelemetry.io/collector/exporter/debugexporter v0.117.0
-	go.opentelemetry.io/collector/pdata v1.23.0
+	go.opentelemetry.io/collector/pdata v1.24.0
 	go.opentelemetry.io/otel v1.34.0
 	go.opentelemetry.io/otel/sdk v1.34.0
 	go.opentelemetry.io/otel/trace v1.34.0
@@ -29,7 +29,7 @@ require (
 	github.com/stretchr/testify v1.10.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/collector/config/configretry v1.23.0 // indirect
-	go.opentelemetry.io/collector/config/configtelemetry v0.117.0 // indirect
+	go.opentelemetry.io/collector/config/configtelemetry v0.118.0 // indirect
 	go.opentelemetry.io/collector/consumer v1.23.0 // indirect
 	go.opentelemetry.io/collector/consumer/consumererror v0.117.0 // indirect
 	go.opentelemetry.io/collector/consumer/consumererror/xconsumererror v0.117.0 // indirect
@@ -48,7 +48,7 @@ require (
 	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28 // indirect
-	google.golang.org/grpc v1.69.2 // indirect
+	google.golang.org/grpc v1.69.4 // indirect
 	google.golang.org/protobuf v1.36.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
