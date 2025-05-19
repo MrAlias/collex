@@ -28,14 +28,15 @@ import (
 )
 
 func Example() {
-	settings := &exporter.Settings{
+	df := debugexporter.NewFactory()
+	factory, err := collex.NewFactory(df, &exporter.Settings{
+		ID: component.NewID(df.Type()),
 		TelemetrySettings: component.TelemetrySettings{
 			Logger:         zap.NewExample(), // Log to STDOUT for example.
 			TracerProvider: otel.GetTracerProvider(),
 			MeterProvider:  otel.GetMeterProvider(),
 		},
-	}
-	factory, err := collex.NewFactory(debugexporter.NewFactory(), settings)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
