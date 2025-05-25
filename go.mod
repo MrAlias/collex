@@ -7,9 +7,9 @@ require (
 	go.opentelemetry.io/collector/exporter v0.126.0
 	go.opentelemetry.io/collector/exporter/debugexporter v0.126.0
 	go.opentelemetry.io/collector/pdata v1.32.0
-	go.opentelemetry.io/otel v1.35.0
+	go.opentelemetry.io/otel v1.36.0
 	go.opentelemetry.io/otel/sdk v1.35.0
-	go.opentelemetry.io/otel/trace v1.35.0
+	go.opentelemetry.io/otel/trace v1.36.0
 	go.uber.org/zap v1.27.0
 )
 
@@ -48,7 +48,7 @@ require (
 	go.opentelemetry.io/collector/pipeline/xpipeline v0.126.0 // indirect
 	go.opentelemetry.io/contrib/bridges/otelzap v0.10.0 // indirect
 	go.opentelemetry.io/otel/log v0.11.0 // indirect
-	go.opentelemetry.io/otel/metric v1.35.0 // indirect
+	go.opentelemetry.io/otel/metric v1.36.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/net v0.39.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
