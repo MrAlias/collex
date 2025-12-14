@@ -7,14 +7,15 @@ require (
 	go.opentelemetry.io/collector/exporter v1.47.0
 	go.opentelemetry.io/collector/exporter/debugexporter v0.141.0
 	go.opentelemetry.io/collector/pdata v1.47.0
-	go.opentelemetry.io/otel v1.38.0
+	go.opentelemetry.io/otel v1.39.0
 	go.opentelemetry.io/otel/sdk v1.38.0
-	go.opentelemetry.io/otel/trace v1.38.0
+	go.opentelemetry.io/otel/trace v1.39.0
 	go.uber.org/zap v1.27.1
 )
 
 require (
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -52,7 +53,7 @@ require (
 	go.opentelemetry.io/collector/pdata/xpdata v0.141.0 // indirect
 	go.opentelemetry.io/collector/pipeline v1.47.0 // indirect
 	go.opentelemetry.io/collector/pipeline/xpipeline v0.141.0 // indirect
-	go.opentelemetry.io/otel/metric v1.38.0 // indirect
+	go.opentelemetry.io/otel/metric v1.39.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/sys v0.38.0 // indirect
